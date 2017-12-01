@@ -25,7 +25,7 @@ float Ultrasonic::read()
 
 float Ultrasonic::readAverage(int times)
 {
-	float sum;
+	float sum = 0;
 	for(int i = 0; i < times; i++)
 	{
 		sum += read();
