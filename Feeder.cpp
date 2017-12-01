@@ -5,6 +5,7 @@
  *      Author: Pedro
  */
 
+#include "Arduino.h"
 #include "Feeder.h"
 
 Feeder::Feeder()
@@ -32,7 +33,6 @@ void Feeder::loop()
 			switchMotor(true);
 		}
 	}
-
 }
 
 void Feeder::switchMotor(bool state)

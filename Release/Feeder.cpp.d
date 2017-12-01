@@ -1,5 +1,4 @@
-Feeder.cpp.o: ..\Feeder.cpp ..\Feeder.h \
- B:\Users\Pedro\Desktop\HX711-master/HX711.h \
+Feeder.cpp.o: ..\Feeder.cpp \
  B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\cores\arduino/Arduino.h \
  B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\cores\arduino/binary.h \
  B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\cores\arduino/WCharacter.h \
@@ -10,11 +9,9 @@ Feeder.cpp.o: ..\Feeder.cpp ..\Feeder.h \
  B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\cores\arduino/Printable.h \
  B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\cores\arduino/USBAPI.h \
  B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\cores\arduino/Arduino.h \
- B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\variants\standard/pins_arduino.h
-
-..\Feeder.h:
-
-B:\Users\Pedro\Desktop\HX711-master/HX711.h:
+ B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\variants\standard/pins_arduino.h \
+ ..\Feeder.h \
+ B:\Users\Pedro\Documents\sloeber-workspace\Agrotech\lib\HX711-master/HX711.h
 
 B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\cores\arduino/Arduino.h:
 
@@ -37,3 +34,7 @@ B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\cor
 B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\cores\arduino/Arduino.h:
 
 B:\Program\ Files\sloeber\arduinoPlugin\packages\arduino\hardware\avr\1.6.20\variants\standard/pins_arduino.h:
+
+..\Feeder.h:
+
+B:\Users\Pedro\Documents\sloeber-workspace\Agrotech\lib\HX711-master/HX711.h:

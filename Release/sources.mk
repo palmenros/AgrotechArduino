@@ -36,8 +36,5 @@ CPP_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 . \
-HX711-master \
-HX711-master/examples/HX711Serial \
-HX711-master/examples/HX711SerialBegin \
 core/core \
 

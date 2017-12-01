@@ -10,9 +10,6 @@ RM := del
 -include sources.mk
 -include subdir.mk
 -include core\core\subdir.mk
--include HX711-master\examples\HX711SerialBegin\subdir.mk
--include HX711-master\examples\HX711Serial\subdir.mk
--include HX711-master\subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
