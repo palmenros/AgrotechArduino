@@ -9,7 +9,7 @@
 #include "Feeder.h"
 
 Feeder::Feeder(int DOUTPin, int CLKPin, int motorPin)
-	: loadCell(DOUTPin, CLKPin), motorPin(motorPin)
+	: motorPin(motorPin), loadCell(DOUTPin, CLKPin)
 {
 }
 
