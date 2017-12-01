@@ -37,4 +37,5 @@ CPP_DEPS :=
 SUBDIRS := \
 . \
 core/core \
+libraries/HX711-master \
 

@@ -12,11 +12,9 @@
 class Feeder {
 protected:
 
-	const int motorPin = 9;
+	const int motorPin;
 
 	/* Load cell */
-	const int DOUTPin;
-	const int CLKPin;
 
 	const int fillWeight;
 	const int minThreshold;
@@ -27,7 +25,7 @@ protected:
 
 public:
 
-	Feeder();
+	Feeder(int DOUTPin, int CLKPin, int motorPin);
 
 	void setup();
 	void loop();

@@ -46,5 +46,10 @@
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.6.20/variants/standard</locationURI>
 		</link>
+		<link>
+			<name>libraries/HX711-master</name>
+			<type>2</type>
+			<location>B:/Users/Pedro/Documents/Arduino/libraries/HX711-master</location>
+		</link>
 	</linkedResources>
 </projectDescription>

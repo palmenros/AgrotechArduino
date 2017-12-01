@@ -8,8 +8,8 @@
 #include "Arduino.h"
 #include "Feeder.h"
 
-Feeder::Feeder()
-	: loadCell(DOUTPin, CLKPin)
+Feeder::Feeder(int DOUTPin, int CLKPin, int motorPin)
+	: loadCell(DOUTPin, CLKPin), motorPin(motorPin)
 {
 }
 

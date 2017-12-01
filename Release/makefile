@@ -9,6 +9,7 @@ RM := del
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
+-include libraries\HX711-master\subdir.mk
 -include core\core\subdir.mk
 -include objects.mk
 
