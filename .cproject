@@ -21,6 +21,7 @@
 								<option id="io.sloeber.compiler.cpp.sketch.option.incpath.1121403912" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Agrotech/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Agrotech/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Agrotech/HX711-master}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.467779811" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
@@ -28,6 +29,7 @@
 								<option id="io.sloeber.compiler.c.sketch.option.incpath.1170333368" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Agrotech/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Agrotech/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Agrotech/HX711-master}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.357791720" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
@@ -35,6 +37,7 @@
 								<option id="io.sloeber.compiler.asm.sketch.option.incpath.127318734" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Agrotech/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Agrotech/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Agrotech/HX711-master}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.83445336" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>
