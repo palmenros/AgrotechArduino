@@ -11,6 +11,8 @@
 Ultrasonic::Ultrasonic(int trigger, int echo)
 	: triggerPin(trigger), echoPin(echo)
 {
+	pinMode(triggerPin, OUTPUT);
+	pinMode(echoPin, INPUT);
 }
 
 float Ultrasonic::read()

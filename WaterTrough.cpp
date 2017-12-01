@@ -15,6 +15,7 @@ WaterTrough::WaterTrough(int triggerPin, int echoPin, int pumpPin)
 
 void WaterTrough::setup()
 {
+	pinMode(pumpPin, OUTPUT);
 }
 
 void WaterTrough::loop()

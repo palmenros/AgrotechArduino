@@ -15,6 +15,7 @@ Feeder::Feeder(int DOUTPin, int CLKPin, int motorPin)
 
 void Feeder::setup()
 {
+	pinMode(motorPin, OUTPUT);
 	loadCell.set_scale();
 	loadCell.tare(20);
 }
