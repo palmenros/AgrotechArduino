@@ -51,5 +51,10 @@
 			<type>2</type>
 			<location>B:/Users/Pedro/Documents/Arduino/libraries/HX711-master</location>
 		</link>
+		<link>
+			<name>libraries/TimerOne</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/TimerOne/1.1.0</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>
