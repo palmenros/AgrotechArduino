@@ -8,7 +8,9 @@
 #ifndef LIGHTNING_H_
 #define LIGHTNING_H_
 
-class Lightning
+#include "AutomatedModule.h"
+
+class Lightning : public AutomatedModule
 {
 protected:
 

@@ -9,8 +9,9 @@
 #define WATERTROUGH_H_
 
 #include "Ultrasonic.h"
+#include "AutomatedModule.h"
 
-class WaterTrough
+class WaterTrough : public AutomatedModule
 {
 protected:
 

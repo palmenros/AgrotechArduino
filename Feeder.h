@@ -5,11 +5,13 @@
  *      Author: Pedro
  */
 #include "HX711.h"
+#include "AutomatedModule.h"
 
 #ifndef FEEDER_H_
 #define FEEDER_H_
 
-class Feeder {
+class Feeder : public AutomatedModule
+{
 protected:
 
 	const int motorPin;

@@ -8,7 +8,8 @@
 #ifndef ULTRASONIC_H_
 #define ULTRASONIC_H_
 
-class Ultrasonic {
+class Ultrasonic
+{
 protected:
 	const int triggerPin;
 	const int echoPin;

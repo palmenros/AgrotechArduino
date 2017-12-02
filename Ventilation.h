@@ -8,7 +8,9 @@
 #ifndef VENTILATION_H_
 #define VENTILATION_H_
 
-class Ventilation
+#include "AutomatedModule.h"
+
+class Ventilation : public AutomatedModule
 {
 protected:
 
