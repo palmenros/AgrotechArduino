@@ -10,7 +10,8 @@ void setup()
 
 void handleInput()
 {
-	if(Serial.available() < 5){
+	if(Serial.available() < 5)
+	{
 		return;
 	}
 
