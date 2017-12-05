@@ -16,3 +16,11 @@ bool AutomatedModule::isAutomatic() const
 {
 	return automatic;
 }
+
+void AutomatedModule::setup()
+{
+}
+
+void AutomatedModule::loop()
+{
+}

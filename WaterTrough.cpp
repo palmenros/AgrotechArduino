@@ -37,7 +37,7 @@ void WaterTrough::loop()
 
 float WaterTrough::getWaterHeight()
 {
-	return sensorHeight - ultrasonic.getDistance();
+	return sensorHeight - ultrasonic.read();
 }
 
 void WaterTrough::switchPump(bool state)

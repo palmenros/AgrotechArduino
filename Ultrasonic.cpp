@@ -17,11 +17,15 @@ Ultrasonic::Ultrasonic(int trigger, int echo)
 
 float Ultrasonic::read()
 {
+	  digitalWrite(triggerPin, LOW);
+	  delayMicroseconds(4);
 	  digitalWrite(triggerPin, HIGH);
-	  delay(10);
+	  delayMicroseconds(10);
 	  digitalWrite(triggerPin, LOW);
 
-	  float time = pulseIn(echoPin, HIGH) / 2;
+	  long duration = pulseIn(echoPin, HIGH);
+
+	  float time = duration / 2.f;
 	  return time * 0.034321;
 }
 

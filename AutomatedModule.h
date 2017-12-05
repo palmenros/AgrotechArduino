@@ -15,10 +15,9 @@ protected:
 
 public:
 
-	virtual void setup() = 0;
-	virtual void loop() = 0;
-
-	virtual ~AutomatedModule() = default;
+	/*Ideally, this methods should be pure virtual. They are not because they would create a v-table in every subclass, affecting performance*/
+	void setup();
+	void loop();
 
 	void setAutomatic(bool automatic);
 	bool isAutomatic() const;
