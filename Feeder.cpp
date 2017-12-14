@@ -44,5 +44,7 @@ void Feeder::switchMotor(bool state)
 
 float Feeder::getWeight()
 {
-	return loadCell.get_value(10);
+	//HACK: Our load cell amplifier circuit HX711 broke, so we had to add a magic number
+	//Do *NOT* add this to any functional HX711
+	return loadCell.get_value(10) / 1000.f;
 }

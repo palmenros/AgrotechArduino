@@ -18,8 +18,8 @@ protected:
 
 	/* Load cell */
 
-	const int fillWeight;
-	const int minThreshold;
+	const float fillWeight = 120.f;
+	const float minThreshold = 50.f;
 
 	HX711 loadCell;
 
