@@ -5,29 +5,50 @@
 #include "Lightning.h"
 #include "Alarm.h"
 #include "Ultrasonic.h"
+#include "WaterTrough.h"
+
 
 byte buffer[5];
 
-Feeder feeder(A1, A0, 9);
-Ventilation ventilation(10, A2);
-Lightning lightning(3, A5);
-Ultrasonic ultrasonic(7, 6);
-int flameSensor = 8;
-int PIRSensor = 5;
+/*
+ * Custom classes driving actuators with sensors information
+ */
+Feeder feeder(A1, A0, 9);					//SENSOR 0x0
+Ventilation ventilation(10, A2);			//SENSOR 0x1
+Lightning lightning(3, A5);					//SENSOR 0x2
+WaterTrough waterTrough(1, 11, 12);			//SENSOR 0x3
 
-int pump =12;
+/*Waste ultrasonic sensor*/
+Ultrasonic ultrasonic(7, 6);				//SENSOR 0x4
+
+/* Flame sensor Digital Output PIN*/
+int flameSensor = 8;						//SENSOR 0x5
+
+/*
+ *  PIR Sensor Digital Output PIN
+ *  Very important, set your PIR Sensor to only trigger once until some time passes
+ */
+int PIRSensor = 5;							//SENSOR 0x6
+
+/* Height in cm of waste container */
+float wasteContainerHeight = 10.5;
+
+/* Number of milliseconds since program started */
+unsigned long elapsedTime = 0;
 
 void setup()
 {
-	Communication::init();
+  Communication::init();
+  Alarm::init(2);
+
+  /* This may take some time in order to calibrate the load cell*/
   feeder.setup();
   ventilation.setup();
   lightning.setup();
+  waterTrough.setup();
+
   pinMode(flameSensor, INPUT);
   pinMode(PIRSensor, INPUT);
-  pinMode(pump, OUTPUT);
-  Alarm::init(2);
-  Alarm::on();
 }
 
 void handleInput()
@@ -45,7 +66,7 @@ void handleInput()
 	bool refill = true;
 	uint32_t input = 0;
 
-	if(actuator < 2)
+	if(actuator > 2)
 	{
 		refill = buffer[1] != 0;
 	} else {
@@ -58,84 +79,55 @@ void handleInput()
 
 	float value = *((float*)&input);
 
-  if(actuator == 3) {
-    lightning.setLightsBrightness(value / 100.f); 
-  }
+	switch(actuator) {
+	case 0:
+		lightning.setAutomatic(automatic);
+		if(!automatic) lightning.setLightsBrightness(value / 100.f);
+		break;
+	case 1:
+		ventilation.setAutomatic(automatic);
+		if(!automatic) ventilation.setVentilatorSpeed(value / 100.f);
+		break;
+	case 2:
+		feeder.setAutomatic(automatic);
+		if(!automatic) feeder.switchMotor(refill);
+		break;
+	case 3:
+		waterTrough.setAutomatic(automatic);
+		if(!automatic) waterTrough.switchPump(refill);
+		break;
+	}
+
 }
 
 void loop()
 {
+	unsigned long newTime = millis();
+	float deltaTime = (newTime - elapsedTime) / 1000.f;
+	elapsedTime = newTime;
 
-  handleInput();
-	//Communication::sendSensorData(random(0, 5), millis() / 1000.f);
+	handleInput();
 
-//  Serial.print("Temperatura: ");
+	lightning.loop();
+	feeder.loop();
+	ventilation.loop();
+	waterTrough.loop();
 
-  /* Read multiple times to recharge ADC */
-//  ventilation.getTemperature();
-//  ventilation.getTemperature();
-//  ventilation.getTemperature();
-//  ventilation.getTemperature();
-//  ventilation.getTemperature();
-//  
-//  /* Just keep the last reading */
-  lightning.loop();
-  ventilation.getTemperature();
-  ventilation.getTemperature();
-  ventilation.getTemperature();
-  ventilation.getTemperature();
-  ventilation.getTemperature();
-  ventilation.getTemperature();
-  Communication::sendSensorData(1, ventilation.getTemperature());
-
-  Communication::sendSensorData(5, ultrasonic.read());
-
+	/* Send waste level */
+	Communication::sendSensorData(0x4, (wasteContainerHeight - ultrasonic.read()) / wasteContainerHeight);
   
-//
-  /* FLAME SENSOR */
-//  bool flameDetected = !digitalRead(flameSensor);
-//  Serial.print("Llama: ");
-//  Serial.println(flameDetected);
+    /* Flame Sensor */
+	bool flameDetected = !digitalRead(flameSensor);
+	Communication::sendSensorData(0x5, flameDetected);
+	if(flameDetected)
+	{
+		Alarm::on();
+		Alarm::setTimeout(15.f);
+	}
 
-  /* PIR SENSOR */
-//  bool PIRValue = digitalRead(PIRSensor);
-//  Serial.println(PIRValue);
-//
-//  Serial.print("Peso: ");
-//  Serial.println(feeder.getWeight());
+	/* PIR Sensor */
+	bool PIRValue = digitalRead(PIRSensor);
+	Communication::sendSensorData(0x6, PIRValue);
 
-
-//analogWrite(11, 255);
-
-  
-//feeder.loop();
-//  handleInput();
-
-/* MOTOR TEST */
-//  feeder.switchMotor(true);
-//  Serial.println("Encendido");
-//  delay(1000);
-//  feeder.switchMotor(false);
-//  Serial.println("Apagado");
-//  delay(1000);
-//
-//
-
-//lightning.loop();
-
-//  Serial.println(lightning.getLightingPercentage());
-  
-//  digitalWrite(pump, true);
-//  Serial.println("Encendido");
-//  delay(1000);
-//  digitalWrite(pump, false);
-//  Serial.println("Apagado");
-//  delay(1000);
-
-  
-//  Serial.println("Encendido");
-//  delay(1000);
-//  ventilation.setVentilatorSpeed(0);
-//  Serial.println("Apagado");
-//  delay(2000);
+	Alarm::loop(deltaTime);
 }

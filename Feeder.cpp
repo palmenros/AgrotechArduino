@@ -7,6 +7,7 @@
 
 #include "Arduino.h"
 #include "Feeder.h"
+#include "Communication.h"
 
 Feeder::Feeder(int DOUTPin, int CLKPin, int motorPin)
 	: motorPin(motorPin), loadCell(DOUTPin, CLKPin)
@@ -23,6 +24,13 @@ void Feeder::setup()
 void Feeder::loop()
 {
 	float weight = getWeight();
+
+	Communication::sendSensorData(0x0, weight);
+
+	if(!isAutomatic())
+	{
+		return;
+	}
 
 	if(motorState)
 	{

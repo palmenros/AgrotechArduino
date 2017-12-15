@@ -19,10 +19,14 @@ protected:
 	static volatile bool shouldRing;
 	static int buzzerPin;
 
+	static float remainingTime;
+
 	static void switchBuzzer(bool state);
 
 public:
 	static void init(int buzzerPin);
+	static void setTimeout(float time);
+	static void loop(float deltaTime);
 
 	static void interrupt();
 

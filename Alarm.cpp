@@ -13,6 +13,7 @@ float Alarm::time = 1.f;
 volatile bool Alarm::isOn = false;
 volatile bool Alarm::shouldRing = false;
 int Alarm::buzzerPin = 0;
+float Alarm::remainingTime = 0;
 
 void Alarm::init(int buzzerPin)
 {
@@ -48,5 +49,18 @@ void Alarm::interrupt()
 	} else {
 		switchBuzzer(false);
 		shouldRing = isOn;
+	}
+}
+
+void Alarm::setTimeout(float time)
+{
+	remainingTime = time;
+}
+
+void Alarm::loop(float deltaTime)
+{
+	remainingTime -= deltaTime;
+	if(isOn && remainingTime <= 0) {
+		Alarm::off();
 	}
 }

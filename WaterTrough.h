@@ -21,9 +21,9 @@ protected:
 
 	Ultrasonic ultrasonic;
 
-	const int sensorHeight;
-	const int minThreshold;
-	const int fillHeight;
+	const int sensorHeight = 13.f;
+	const int minThreshold = 2.f;
+	const int fillHeight = 10.f;
 
 	bool pumpState = false;
 

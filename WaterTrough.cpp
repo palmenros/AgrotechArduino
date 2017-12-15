@@ -7,6 +7,7 @@
 
 #include "WaterTrough.h"
 #include "Arduino.h"
+#include "Communication.h"
 
 WaterTrough::WaterTrough(int triggerPin, int echoPin, int pumpPin)
 	: ultrasonic(triggerPin, echoPin), pumpPin(pumpPin)
@@ -21,6 +22,14 @@ void WaterTrough::setup()
 void WaterTrough::loop()
 {
 	float height = getWaterHeight();
+	float percentage = (fillHeight - height) / fillHeight;
+	Communication::sendSensorData(0x3, percentage);
+
+	if(!isAutomatic())
+	{
+		return;
+	}
+
 	if(pumpState)
 	{
 		if(height >= fillHeight)

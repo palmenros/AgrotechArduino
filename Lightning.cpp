@@ -14,9 +14,9 @@ Lightning::Lightning(int ledPin, int ldrPin)
 {
 }
 
-float mapf(float x, float in_min, float in_max, float out_min, float out_max)
+float mapf(float x, float inMin, float inMax, float outMin, float outMax)
 {
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+  return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
 
 float clamp(float x, float min, float max)
@@ -42,8 +42,13 @@ void Lightning::loop()
   float ldr = getLightingPercentage();
   float value = mapf(ldr, 0.2, 0.7, 0, 1);
   value = clamp(value, 0, 1);
-  Communication::sendSensorData(3, value);
-  //setLightsBrightness(1.f - value);
+
+  if(isAutomatic())
+  {
+	setLightsBrightness(1.f - value);
+  }
+
+  Communication::sendSensorData(0x2, value);
 }
 
 float Lightning::getLightingPercentage()
